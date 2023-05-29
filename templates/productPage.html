@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <div class="heading">
+        <h1>Payments</h1>
+    </div>
+    <hr>
+
+    <div class="product-container">
+        <form action="/checkout/makepayment/" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="Name" required name="name" id="name">
+            <input type="email" placeholder="Email" required name="email" id="email">
+            <div class="one">
+                <input type="number" placeholder="Amount" required name="amount" id="amt">
+                <input type="submit" id="make" value="Make Payment">
+            </div>
+        </form>
+
+    </div>
+    <hr>
+    <div class="contact">
+        <h3>Payment Towards</h3>
+        <hr>
+        <div class="line"><b>Name:</b> ABC XYZ</div>
+        <div class="line"><b>Email:</b> abc@xyz.com</div>
+        <div class="line"><b>Contact:</b> 90219021929</div>
+        <div class="line"><b>Bank A/C No:</b> 1092091209</div>
+        <div class="line"><b>Bank:</b> Bank Of World</div>
+    </div>
+</body>
+
+</html>
