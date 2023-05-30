@@ -16,21 +16,19 @@ def productPage(request):
 
 
 def checkout(request, id):
-    if (id == 'success' or id == "cancel"):
-        # try:
-        # print(request.COOKIES['pay'])
-        # if request.COOKIES['pay'] == 'ok':
-        #     return render(request, 'success.html')
-
-        return HttpResponse(id)
-
+    if (id == 'success'):
+        context = {
+            'name': request.GET['name'],
+            'email': request.GET['email'],
+            'amount': request.GET['amount']
+        }
+        return render(request, 'success.html',context=context)
+    elif id == 'cancel':
+        HttpResponse(id)
     if request.method == 'POST':
-        DOMAIN = "http:localhost:8000/"
-        # product = Product.objects.filter(id=id).first()
         email = request.POST['email']
         name = request.POST['name']
         amount = int(request.POST['amount'])
-        # transaction_id =
         print(email, name, amount)
         try:
             checkout_session = stripe.checkout.Session.create(
@@ -55,7 +53,8 @@ def checkout(request, id):
                     "email": email
                 },
                 mode='payment',
-                success_url='http://localhost:8000/checkout/success/',
+                success_url='http://localhost:8000/checkout/success?name={}&email={}&amount={}'.format(
+                    name, email, amount),
                 cancel_url='http://localhost:8000/checkout/cancel/'
             )
         # try:

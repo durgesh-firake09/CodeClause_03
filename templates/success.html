@@ -1,12 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .reciept,
+        .return {
+            margin: 30px auto;
+            width: 50%;
+        }
+
+        h1 {
+            margin: 10px;
+        }
+
+        .content {
+            margin: 10px;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        a {
+            color: blue;
+        }
+
+        a:hover {
+            color: purple
+        }
+    </style>
 </head>
+
 <body>
-    Tera hi intezaar thaa
+    <div class="reciept">
+        <h1>Transaction Successful</h1>
+        <hr>
+        <div class="content">
+            <p><b>Name:</b> {{name}}</p>
+            <p><b>Email:</b> {{email}}</p>
+            <p><b>Amount:</b> Rs. {{amount}}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="return">
+        <a href="/">Return to Homepage</a>
+    </div>
 </body>
+
 </html>
